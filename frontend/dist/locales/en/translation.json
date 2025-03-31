@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Home",
+    "skills": "Skills",
+    "forum": "Forum",
+    "support": "Support",
+    "signIn": "Sign In",
+    "joinNow": "Join Now",
+    "search": "Search for skills..."
+  },
+  "home": {
+    "hero": {
+      "title": "Breaking Barriers",
+      "subtitle": "Creating Opportunities",
+      "description": "Empowering women with skills, knowledge, and resources to build a brighter future.",
+      "cta": "Start Learning"
+    },
+    "stats": {
+      "womenTrained": "Women Trained",
+      "skillsOffered": "Skills Offered",
+      "successStories": "Success Stories",
+      "partners": "Partners"
+    },
+    "skills": {
+      "title": "Our Skills",
+      "subtitle": "Explore our range of skills designed to help you thrive in today's digital economy",
+      "learnMore": "Learn more"
+    },
+    "about": {
+      "title": "About Us",
+      "description1": "EmpowerHer, an initiative by Women's Welfare Foundation, is a skill-building platform designed to empower individuals by teaching marketable skills and helping them turn these skills into income. We connect learners with opportunities to sell their products, fostering financial independence and self-reliance.",
+      "description2": "Our mission is to bridge the gender gap in workforce participation and create pathways to economic independence for women across all backgrounds.",
+      "button": "Learn More"
+    }
+  },
+  "skills": {
+    "title": "Explore Skills",
+    "searchPlaceholder": "Search skills...",
+    "noSkills": "No skills found matching your search.",
+    "loading": "Loading skills..."
+  },
+  "skillDetail": {
+    "back": "Back",
+    "videos": "Videos",
+    "flashcards": "Flashcards",
+    "market": "Market",
+    "comingSoon": "Content coming soon.",
+    "loading": "Loading skill details..."
+  },
+  "forum": {
+    "title": "Community Forum",
+    "subtitle": "Connect with other women, share your experiences, ask questions, and find support on your journey to economic independence.",
+    "createPost": "Create New Post",
+    "categories": "Categories",
+    "allCategories": "All Categories",
+    "searchPlaceholder": "Search discussions...",
+    "noDiscussions": "No discussions found matching your criteria.",
+    "clearFilters": "Clear filters",
+    "guidelines": {
+      "title": "Community Guidelines",
+      "rules": [
+        "Be respectful and supportive of other community members",
+        "Share your knowledge and experiences to help others grow",
+        "Keep discussions relevant to women's empowerment and skill development",
+        "Respect privacy and confidentiality when sharing personal stories",
+        "Report any inappropriate content to our moderators"
+      ]
+    }
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "mission": "Our Mission",
+    "missionText": "We're dedicated to empowering women with the skills and opportunities they need to achieve economic independence and build a better future.",
+    "learnMore": "Learn more about us",
+    "rights": "All rights reserved.",
+    "madeWith": "Made with",
+    "forWomenEmpowerment": "for women empowerment"
+  },
+  "language": {
+    "english": "English",
+    "hindi": "Hindi",
+    "marathi": "Marathi"
+  }
+}

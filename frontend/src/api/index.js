@@ -219,6 +219,298 @@ const marketOpportunitiesData = {
   ]
 };
 
+// Sample dealers data
+const dealersData = {
+  "1": [
+    { 
+      _id: "d1", 
+      name: "Lemonx", 
+      address: "Shop No. 5, Gala No. 3, Kasheli Village, Near Bhiwandi, Thane - 421302",
+      contact: "098031 49803 / 022-2546 7891",
+      email: "sales@lemonx.in",
+      description: "Specializes in premium printed and custom paper bags for retail brands. Offers water-resistant coatings and reinforced handles."
+    },
+    { 
+      _id: "d2", 
+      name: "Zenith Paper Bags Manufacturing Co.", 
+      address: "12/A, MIDC Area, Dombivli East, Thane - 421203",
+      contact: "099678 34562",
+      email: "zenithpaperbags@gmail.com",
+      description: "Bulk manufacturer supplying to bakeries, pharmacies, and retail chains across Maharashtra."
+    },
+    { 
+      _id: "d3", 
+      name: "GreenPack Paper Bags", 
+      address: "305, Shreeji Tower, Ghodbunder Road, Thane West - 400615",
+      contact: "091673 54821",
+      email: "info@greenpackthane.com",
+      description: "Eco-friendly packaging solutions provider with FDA-approved food-grade paper bags."
+    },
+    { 
+      _id: "d4", 
+      name: "Thane Paper Products", 
+      address: "45, Pokhran Road No. 1, Near Teen Petrol Pump, Thane West - 400606",
+      contact: "093245 67890",
+      description: "Family-run business offering affordable paper carry bags since 1998."
+    },
+    { 
+      _id: "d5", 
+      name: "EcoPack Solutions", 
+      address: "Unit No. 7, Wagle Industrial Estate, Thane East - 400604",
+      contact: "098765 43210 / 022-2567 8910",
+      email: "ecopack.thane@yahoo.com",
+      description: "Premium designer paper bags with options for cotton/fabric handles."
+    },
+    { 
+      _id: "d6", 
+      name: "TMC Paper Bag Promotion Cell", 
+      address: "3rd Floor, TMC Headquarters, Near Thane Station, Thane West",
+      contact: "022-2533 4455 (Ext. 207)",
+      category: "Municipal Initiative",
+      description: "Provides subsidies and training for paper bag manufacturing units."
+    },
+    { 
+      _id: "d7", 
+      name: "Stree Shakti Paper Bag Unit", 
+      address: "Community Center, Vartak Nagar, Thane West - 400606",
+      contact: "097655 44332 (Ms. Sunanda Patil)",
+      category: "Municipal Initiative",
+      description: "Women's cooperative manufacturing affordable paper bags for local markets."
+    }
+  ],
+  "7": [
+    { 
+      _id: "d8", 
+      name: "Pragna Polymers LLP", 
+      address: "A-2/Shop No.15, Prestige Garden, Almeda Road, Uthalsar, Thane - 400601, Maharashtra, India",
+      contact: "+91-22-2542-1234",
+      website: "https://www.pragnapolymers.com/",
+      description: "Specializes in the manufacturing of scented and decorative candles, offering a wide range of products suitable for various occasions."
+    },
+    { 
+      _id: "d9", 
+      name: "Rajesh Candles", 
+      address: "RD No. 27, Wagle Industrial Estate, Thane West, Maharashtra, India",
+      contact: "+91-22-2583-5678",
+      website: "https://www.exportersindia.com/rajeshcandles/",
+      description: "A retailer and supplier of a variety of wax candles, including traditional and contemporary designs for both domestic and commercial use."
+    },
+    { 
+      _id: "d10", 
+      name: "Global Exports Private Limited", 
+      address: "Plot No. 45, Sector 2, Airoli, Thane, Maharashtra, India",
+      contact: "+91-22-2779-3456",
+      website: "https://www.exportersindia.com/thane/candles.htm",
+      description: "Engaged in exporting and supplying a diverse range of candle products, catering to both domestic and international markets."
+    },
+    { 
+      _id: "d11", 
+      name: "Mahakal A.P Creation", 
+      address: "G-8, Ground Floor, C Wing, Mahadev Apartment Plaza Coop Hsg Soc Ltd, Saibaba Nagar, Navghar Road, Thane, Maharashtra, India",
+      contact: "+91-22-2597-8910",
+      website: "https://www.dial4trade.com/thane/candle.htm",
+      description: "A wholesale supplier offering a variety of candles, including decorative and utility candles, suitable for various occasions and purposes."
+    },
+    { 
+      _id: "d12", 
+      name: "Thane Small Scale Industries Association (TSSIA)", 
+      address: "Plot No. P-26, Road No. 16-T, Wagle Industrial Estate, Thane - 400604, Maharashtra, India",
+      contact: "+91-22-2582-0405",
+      website: "https://tssia.org/",
+      category: "Government Initiative",
+      description: "An organization dedicated to supporting small-scale industries by facilitating interactions with government officials and addressing challenges related to various regulatory bodies."
+    },
+    { 
+      _id: "d13", 
+      name: "Ministry of Micro, Small & Medium Enterprises (MSME)", 
+      address: "Udyog Bhawan, Rafi Marg, New Delhi - 110011, India",
+      contact: "+91-11-2306-2266",
+      website: "https://msme.gov.in/all-schemes-msme",
+      category: "Government Initiative",
+      description: "Provides various schemes and support mechanisms for the growth and development of micro, small, and medium enterprises across India."
+    },
+    { 
+      _id: "d14", 
+      name: "Development Commissioner (Handicrafts), Ministry of Textiles", 
+      address: "West Block No. 7, R.K. Puram, New Delhi - 110066, India",
+      contact: "+91-11-2610-0589",
+      website: "https://handicrafts.nic.in/",
+      category: "Government Initiative",
+      description: "The nodal agency for craft and artisan-based activities, offering technical and financial support for the development and marketing of handicrafts."
+    }
+  ],
+  "4": [
+    { 
+      _id: "d15", 
+      name: "Thane Small Scale Industries Association (TSSIA)", 
+      address: "TSSIA House, Plot No. P-26, Road No. 16/T, Off Appasaheb Khambete Marg (Road No 16), Wagle Industrial Estate, Thane (W)- 400604",
+      contact: "+91 77188 79764 / +91 77188 79254 / +91 22 2582 0429",
+      email: "secretary@tssia.org",
+      website: "https://tssia.org/",
+      description: "TSSIA supports small-scale industries and entrepreneurs in Thane. They may provide networking opportunities and guidance on marketing homemade products like masks."
+    },
+    { 
+      _id: "d16", 
+      name: "District Industries Centre (DIC), Thane", 
+      address: "M.I.D.C. Commercial Complex, 2nd Floor, Near Modela Woollen Mill, Wagle Industrial Estate, Thane-400604",
+      contact: "(022) 25828504",
+      email: "didic.thane@maharashtra.gov.in",
+      website: "https://thane.nic.in/district-industries-centre/",
+      description: "The DIC provides information on various government schemes for entrepreneurs, including those interested in mask manufacturing. They can guide you on subsidies, training programs, and potential market linkages."
+    },
+    { 
+      _id: "d17", 
+      name: "Jidnyasa Trust Thane", 
+      address: "2 Jayanand Society, M. G. Road, Naupada, Thane-400602",
+      contact: "022-25403857 / 9820137576",
+      email: "jidnyasatrust@gmail.com",
+      website: "http://jidnyasatrust.org.in",
+      description: "Jidnyasa Trust focuses on education and literacy, environment and forests, and vocational training. They may have initiatives supporting homemade mask production."
+    }
+  ]
+  // Other skills will have their dealers data added here as needed
+};
+
+// Sample flashcards data
+const flashcardsData = {
+  "1": {
+    title: "Paper Bag Making Process",
+    // Using direct image URL that will work reliably
+    image: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFficCnj4G4XnAXaY/root/content",
+    // Fallback image if the above doesn't work
+    fallbackImage: "https://via.placeholder.com/800x450?text=Paper+Bag+Making",
+    steps: [
+      {
+        _id: "f1",
+        stepNumber: 1,
+        title: "Gather Materials",
+        description: "You'll need recycled paper or kraft paper, scissors, ruler, pencil, and glue or double-sided tape."
+      },
+      {
+        _id: "f2",
+        stepNumber: 2,
+        title: "Measure and Cut Paper",
+        description: "Cut the paper to the desired size depending on the bag dimensions you want. A standard size is 30cm x 25cm."
+      },
+      {
+        _id: "f3",
+        stepNumber: 3,
+        title: "Fold and Create Creases",
+        description: "Fold the paper as shown in the image, creating sharp creases at each fold. Make sure to align edges precisely."
+      },
+      {
+        _id: "f4",
+        stepNumber: 4,
+        title: "Form the Bag Body",
+        description: "Fold the sides inward and create the bottom by folding up and securing with glue. Press firmly to ensure the glue bonds well."
+      },
+      {
+        _id: "f5",
+        stepNumber: 5,
+        title: "Add Handles",
+        description: "Attach paper or cord handles by gluing them to the inside of the bag's top edges. Make sure they're securely attached."
+      },
+      {
+        _id: "f6",
+        stepNumber: 6,
+        title: "Reinforce and Decorate",
+        description: "Strengthen the bottom and handles if needed, then decorate your bag as desired. Use stamps, paint, or markers for personalization."
+      }
+    ]
+  },
+  "3": {
+    title: "Sanitizer Making Process",
+    // Using the provided OneDrive image URL
+    image: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFfzkTr6w03xG7dhU/root/content",
+    // Fallback image if the above doesn't work
+    fallbackImage: "https://via.placeholder.com/800x450?text=Sanitizer+Making",
+    steps: [
+      {
+        _id: "f21",
+        stepNumber: 1,
+        title: "Gather Materials and Ingredients",
+        description: "You'll need isopropyl alcohol (91-99%), aloe vera gel, essential oils (optional), glycerin (optional), a clean bowl, measuring cups, a funnel, and containers for storage."
+      },
+      {
+        _id: "f22",
+        stepNumber: 2,
+        title: "Prepare Your Workspace",
+        description: "Clean your work area thoroughly. Ensure you have good ventilation and are away from any open flames as alcohol is flammable."
+      },
+      {
+        _id: "f23",
+        stepNumber: 3,
+        title: "Mix the Ingredients",
+        description: "Combine 2 parts alcohol with 1 part aloe vera gel in a clean bowl. This creates a sanitizer with approximately 60-70% alcohol content, which is effective against most germs."
+      },
+      {
+        _id: "f24",
+        stepNumber: 4,
+        title: "Add Optional Ingredients",
+        description: "If desired, add a few drops of essential oil for fragrance (like lavender or tea tree oil) and a few drops of glycerin to prevent skin dryness."
+      },
+      {
+        _id: "f25",
+        stepNumber: 5,
+        title: "Mix Thoroughly",
+        description: "Stir the mixture well to ensure all ingredients are fully incorporated. Make sure there are no clumps of aloe vera gel."
+      },
+      {
+        _id: "f26",
+        stepNumber: 6,
+        title: "Transfer to Containers",
+        description: "Using a funnel, carefully pour the sanitizer into clean spray bottles or pump containers. Label them with the contents and date of preparation."
+      }
+    ]
+  },
+  "7": {
+    title: "Candle Making Process",
+    // Using the provided OneDrive image URL
+    image: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFgQDnnh5kq_RDr0VJ/root/content",
+    // Fallback image if the above doesn't work
+    fallbackImage: "https://via.placeholder.com/800x450?text=Candle+Making",
+    steps: [
+      {
+        _id: "f31",
+        stepNumber: 1,
+        title: "Gather Materials and Equipment",
+        description: "Collect wax (paraffin, soy, or beeswax), wicks, fragrance oils, colorants, a double boiler or melting pot, thermometer, containers, and a heat source."
+      },
+      {
+        _id: "f32",
+        stepNumber: 2,
+        title: "Prepare Containers and Wicks",
+        description: "Clean and dry your containers. Attach wicks to the bottom of containers using a small amount of melted wax or wick stickers. Use chopsticks or pencils to center and hold the wicks."
+      },
+      {
+        _id: "f33",
+        stepNumber: 3,
+        title: "Melt the Wax",
+        description: "Using a double boiler, slowly melt the wax to the recommended temperature (usually around 180°F/82°C). Stir occasionally to ensure even melting."
+      },
+      {
+        _id: "f34",
+        stepNumber: 4,
+        title: "Add Fragrance and Color",
+        description: "Once the wax reaches the appropriate temperature, remove from heat and add fragrance oils (typically 6-10% of wax weight) and desired candle dye. Stir gently for 1-2 minutes."
+      },
+      {
+        _id: "f35",
+        stepNumber: 5,
+        title: "Pour into Containers",
+        description: "Cool the wax slightly to the recommended pouring temperature (usually 135-145°F/57-63°C). Carefully pour into prepared containers, leaving some space at the top."
+      },
+      {
+        _id: "f36",
+        stepNumber: 6,
+        title: "Allow to Cool and Cure",
+        description: "Let candles cool undisturbed for several hours at room temperature. Trim wicks to 1/4 inch before lighting. For best results, allow candles to cure for 24-48 hours before use."
+      }
+    ]
+  }
+  // Other skills can have their flashcards added here
+};
+
 // Function to fetch all skills
 export const fetchAllSkills = async () => {
   // Simulate API delay
@@ -267,6 +559,24 @@ export const fetchSkillMarketOpportunities = async (skillId) => {
   
   const opportunities = marketOpportunitiesData[skillId] || [];
   return { status: 200, data: { data: opportunities } };
+};
+
+// Function to fetch dealers for a skill
+export const fetchSkillDealers = async (skillId) => {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 600));
+  
+  const dealers = dealersData[skillId] || [];
+  return { status: 200, data: { data: dealers } };
+};
+
+// Function to fetch flashcards for a skill
+export const fetchSkillFlashcards = async (skillId) => {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 550));
+  
+  const flashcard = flashcardsData[skillId];
+  return { status: 200, data: { data: flashcard || null } };
 };
 
 // Function for user registration

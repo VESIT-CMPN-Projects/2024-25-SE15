@@ -4,7 +4,9 @@ import {
   fetchSkillById, 
   fetchSkillVideos, 
   fetchSkillSteps, 
-  fetchSkillMarketOpportunities 
+  fetchSkillMarketOpportunities,
+  fetchSkillDealers,
+  fetchSkillFlashcards
 } from '../api';
 
 const SkillDetail = () => {
@@ -13,6 +15,8 @@ const SkillDetail = () => {
   const [videos, setVideos] = useState([]);
   const [steps, setSteps] = useState([]);
   const [opportunities, setOpportunities] = useState([]);
+  const [dealers, setDealers] = useState([]);
+  const [flashcard, setFlashcard] = useState(null);
   const [activeTab, setActiveTab] = useState('videos');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,15 +32,19 @@ const SkillDetail = () => {
         setSkill(skillResponse.data.data);
         
         // Fetch related data
-        const [videosResponse, stepsResponse, opportunitiesResponse] = await Promise.all([
+        const [videosResponse, stepsResponse, opportunitiesResponse, dealersResponse, flashcardResponse] = await Promise.all([
           fetchSkillVideos(id),
           fetchSkillSteps(id),
-          fetchSkillMarketOpportunities(id)
+          fetchSkillMarketOpportunities(id),
+          fetchSkillDealers(id),
+          fetchSkillFlashcards(id)
         ]);
         
         setVideos(videosResponse.data.data || []);
         setSteps(stepsResponse.data.data || []);
         setOpportunities(opportunitiesResponse.data.data || []);
+        setDealers(dealersResponse.data.data || []);
+        setFlashcard(flashcardResponse.data.data);
         
         setIsLoading(false);
       } catch (err) {
@@ -200,9 +208,87 @@ const SkillDetail = () => {
         </div>
       );
     } else if (activeTab === 'flashcards') {
+      if (flashcard) {
+        return (
+          <div className="flashcards-container space-y-8">
+            <div className="skill-flashcard bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="w-full flex justify-center">
+                <img
+                  src={flashcard.image} 
+                  alt={flashcard.title} 
+                  className="w-full object-contain max-h-full"
+                  style={{ maxHeight: "100vh" }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = flashcard.fallbackImage || "https://via.placeholder.com/800x450?text=Flashcard+Image";
+                  }}
+                />
+              </div>
+              
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-4">{flashcard.title}</h2>
+                
+                <div className="steps-container space-y-6">
+                  {flashcard.steps.map(step => (
+                    <div key={step._id} className="step">
+                      <h3 className="text-lg font-semibold">Step {step.stepNumber}: {step.title}</h3>
+                      <p className="text-gray-600">{step.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
       return <p className="text-center text-gray-500">Flashcards content coming soon.</p>;
     } else if (activeTab === 'market') {
-      return <p className="text-center text-gray-500">Market opportunities content coming soon.</p>;
+      return (
+        <div className="space-y-8">
+          {/* Market Opportunities Section */}
+          <div className="market-opportunities">
+            <h2 className="text-xl font-bold mb-4">Market Opportunities</h2>
+            {opportunities.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {opportunities.map(opportunity => (
+                  <div key={opportunity._id} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                    <h3 className="font-semibold text-lg mb-2">{opportunity.title}</h3>
+                    <p className="text-gray-600">{opportunity.description}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-500">No market opportunities available at this time.</p>
+            )}
+          </div>
+          
+          {/* Dealers Section - Show for Paper Bag Making, Candle Making, and Mask Making */}
+          {(id === "1" || id === "7" || id === "4") && dealers.length > 0 && (
+            <div className="dealers-section mt-8">
+              <h2 className="text-xl font-bold mb-4">
+                {id === "1" ? "Paper Bag Dealers in Thane" : 
+                 id === "7" ? "Candle Making Suppliers and Support in Thane" :
+                 "Mask Making Support Organizations in Thane"}
+              </h2>
+              <div className="grid grid-cols-1 gap-4">
+                {dealers.map(dealer => (
+                  <div key={dealer._id} className="bg-white p-4 rounded-lg shadow border border-gray-200">
+                    <h3 className="font-semibold text-lg">{dealer.name}</h3>
+                    <div className="mt-2 space-y-1 text-sm">
+                      <p><span className="font-medium">Address:</span> {dealer.address}</p>
+                      <p><span className="font-medium">Contact:</span> {dealer.contact}</p>
+                      {dealer.email && <p><span className="font-medium">Email:</span> {dealer.email}</p>}
+                      {dealer.website && <p><span className="font-medium">Website:</span> <a href={dealer.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{dealer.website}</a></p>}
+                      {dealer.category && <p><span className="font-medium">Category:</span> {dealer.category}</p>}
+                      <p className="mt-2 text-gray-600">{dealer.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      );
     }
   };
 
