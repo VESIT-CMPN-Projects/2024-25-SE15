@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { FiHeart, FiInstagram, FiFacebook, FiTwitter, FiLinkedin, FiMail, FiPhone, FiMapPin, FiArrowRight } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   
   return (
     <footer className="bg-gradient-to-t from-gray-100 to-white">
-      {/* Newsletter Section */}
-
-      
       {/* Main Footer */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -38,37 +37,37 @@ const Footer = () => {
           
           <div>
             <h3 className="text-lg font-semibold text-text-primary mb-6 relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-6 before:w-1 before:bg-primary-600 before:rounded-full">
-              Quick Links
+              {t('footer.quickLinks')}
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-text-secondary hover:text-primary-600 transition-colors duration-300 flex items-center group">
                   <FiArrowRight className="mr-2 transform transition-transform group-hover:translate-x-1" size={14} />
-                  Home
+                  {t('nav.home')}
                 </Link>
               </li>
               <li>
                 <Link to="/skills" className="text-text-secondary hover:text-primary-600 transition-colors duration-300 flex items-center group">
                   <FiArrowRight className="mr-2 transform transition-transform group-hover:translate-x-1" size={14} />
-                  Skills
+                  {t('nav.skills')}
                 </Link>
               </li>
               <li>
                 <Link to="/forum" className="text-text-secondary hover:text-primary-600 transition-colors duration-300 flex items-center group">
                   <FiArrowRight className="mr-2 transform transition-transform group-hover:translate-x-1" size={14} />
-                  Forum
+                  {t('nav.forum')}
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="text-text-secondary hover:text-primary-600 transition-colors duration-300 flex items-center group">
                   <FiArrowRight className="mr-2 transform transition-transform group-hover:translate-x-1" size={14} />
-                  About Us
+                  {t('nav.about')}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-text-secondary hover:text-primary-600 transition-colors duration-300 flex items-center group">
                   <FiArrowRight className="mr-2 transform transition-transform group-hover:translate-x-1" size={14} />
-                  Contact
+                  {t('nav.contact')}
                 </Link>
               </li>
             </ul>
@@ -76,7 +75,7 @@ const Footer = () => {
           
           <div>
             <h3 className="text-lg font-semibold text-text-primary mb-6 relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-6 before:w-1 before:bg-primary-600 before:rounded-full">
-              Contact
+              {t('footer.contact')}
             </h3>
             <ul className="space-y-4">
               <li className="flex">
@@ -117,13 +116,13 @@ const Footer = () => {
           
           <div>
             <h3 className="text-lg font-semibold text-text-primary mb-6 relative pl-4 before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-6 before:w-1 before:bg-primary-600 before:rounded-full">
-              Our Mission
+              {t('footer.mission')}
             </h3>
             <p className="text-text-secondary leading-relaxed mb-6">
-              We're dedicated to empowering women with the skills and opportunities they need to achieve economic independence and build a better future.
+              {t('footer.missionText')}
             </p>
             <Link to="/about" className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors group">
-              Learn more about us
+              {t('footer.learnMore')}
               <FiArrowRight className="ml-2 transform transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -132,7 +131,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-text-secondary text-sm">
-              © {currentYear} EmpowerHer. All rights reserved.
+              © {currentYear} EmpowerHer. {t('footer.rights')}
             </p>
             <div className="mt-4 md:mt-0 flex flex-wrap gap-4 text-sm">
               <a href="#" className="text-text-secondary hover:text-primary-600 transition-colors">Privacy Policy</a>
@@ -141,7 +140,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="mt-6 flex items-center justify-center text-text-secondary text-sm">
-            Made with <FiHeart className="mx-1 text-primary-500" /> for women empowerment
+            {t('footer.madeWith')} <FiHeart className="mx-1 text-primary-500" /> {t('footer.forWomenEmpowerment')}
           </p>
         </div>
       </div>

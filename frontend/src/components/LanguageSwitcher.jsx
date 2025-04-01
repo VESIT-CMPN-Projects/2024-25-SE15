@@ -1,9 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiGlobe } from 'react-icons/fi';
+import { FiGlobe, FiChevronDown } from 'react-icons/fi';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const LanguageSwitcher = () => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
+  const { currentLanguage, changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -12,6 +14,14 @@ const LanguageSwitcher = () => {
     { code: 'hi', name: t('language.hindi') },
     { code: 'mr', name: t('language.marathi') }
   ];
+
+  // Find current language name
+  const currentLang = languages.find(lang => lang.code === currentLanguage) || languages[0];
+
+  const handleLanguageChange = (langCode) => {
+    changeLanguage(langCode);
+    setIsOpen(false);
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -27,37 +37,26 @@ const LanguageSwitcher = () => {
     };
   }, []);
 
-  const changeLanguage = (langCode) => {
-    i18n.changeLanguage(langCode);
-    setIsOpen(false);
-  };
-
-  // Helper to get current language name
-  const getCurrentLanguageName = () => {
-    const currentLang = languages.find(lang => lang.code === i18n.language);
-    return currentLang ? currentLang.name : languages[0].name;
-  };
-
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative ml-2" ref={dropdownRef}>
       <button
-        className="flex items-center px-3 py-2 text-sm text-gray-700 hover:text-primary-600 rounded-lg"
+        className="flex items-center px-2 py-1 text-sm rounded-md hover:bg-gray-100 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
       >
-        <FiGlobe className="mr-1" size={18} />
-        <span className="hidden md:inline-block">{getCurrentLanguageName()}</span>
+        <FiGlobe className="mr-1" />
+        <span className="hidden sm:inline">{currentLang.name}</span>
+        <FiChevronDown className="ml-1" size={14} />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20 animate-fade-in">
+        <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50 animate-fade-in">
           {languages.map((language) => (
             <button
               key={language.code}
-              onClick={() => changeLanguage(language.code)}
-              className={`block px-4 py-2 text-sm text-left w-full hover:bg-gray-100 ${
-                i18n.language === language.code ? 'text-primary-600 font-medium' : 'text-gray-700'
+              className={`w-full text-left px-4 py-2 text-sm ${
+                currentLanguage === language.code ? 'bg-primary-50 text-primary-600' : 'hover:bg-gray-100'
               }`}
+              onClick={() => handleLanguageChange(language.code)}
             >
               {language.name}
             </button>

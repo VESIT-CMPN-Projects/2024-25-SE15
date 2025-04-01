@@ -615,3 +615,21 @@ export const loginUser = async (credentials) => {
 
 // Export additional functions that might be needed
 export const fetchSkills = fetchAllSkills;
+
+// Function to fetch featured skills
+export const fetchFeaturedSkills = async () => {
+  // In a real app, this would make an API call
+  // For now, we'll return the skillsData but mark some as featured
+  const featuredSkills = skillsData.map(skill => ({
+    ...skill,
+    isFeatured: true
+  }));
+  
+  // Simulate API response
+  return {
+    status: 200,
+    data: {
+      data: featuredSkills
+    }
+  };
+};

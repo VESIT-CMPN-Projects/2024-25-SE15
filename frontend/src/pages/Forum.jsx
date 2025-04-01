@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMessageSquare, FiUser, FiClock, FiPlusCircle, FiFilter, FiSearch } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 // Mock data for forum categories
 const forumCategories = [
@@ -104,6 +105,7 @@ const initialPosts = [
 ];
 
 const Forum = () => {
+  const { t } = useTranslation();
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
@@ -161,9 +163,9 @@ const Forum = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Community Forum</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('forum.title')}</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Connect with other women, share your experiences, ask questions, and find support on your journey to economic independence.
+            {t('forum.subtitle')}
           </p>
         </div>
 
@@ -171,7 +173,7 @@ const Forum = () => {
         <div className="flex justify-end mb-6">
           <button className="flex items-center bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors shadow-md">
             <FiPlusCircle className="mr-2" />
-            Create New Post
+            {t('forum.createPost')}
           </button>
         </div>
 
@@ -180,14 +182,14 @@ const Forum = () => {
           {/* Categories Sidebar */}
           <div className="lg:w-1/4">
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-semibold mb-4">Categories</h2>
+              <h2 className="text-xl font-semibold mb-4">{t('forum.categories')}</h2>
               <ul className="space-y-2">
                 <li>
                   <button 
                     onClick={() => handleCategoryChange('All')}
                     className={`w-full text-left px-3 py-2 rounded ${activeCategory === 'All' ? 'bg-red-50 text-red-600 font-medium' : 'hover:bg-gray-100'}`}
                   >
-                    All Categories
+                    {t('forum.allCategories')}
                   </button>
                 </li>
                 {forumCategories.map(category => (
@@ -212,7 +214,7 @@ const Forum = () => {
               <div className="flex-grow relative">
                 <input
                   type="text"
-                  placeholder="Search discussions..."
+                  placeholder={t('forum.searchPlaceholder')}
                   value={searchTerm}
                   onChange={handleSearchChange}
                   className="w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
@@ -226,11 +228,19 @@ const Forum = () => {
                   onChange={handleSortChange}
                   className="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600"
                 >
-                  <option value="latest">Latest</option>
-                  <option value="popular">Most Replies</option>
-                  <option value="views">Most Views</option>
+                  <option value="latest">{t('forum.latest')}</option>
+                  <option value="popular">{t('forum.mostReplies')}</option>
+                  <option value="views">{t('forum.mostViews')}</option>
                 </select>
               </div>
+              {(searchTerm || activeCategory !== 'All' || sortBy !== 'latest') && (
+                <button 
+                  onClick={() => {setActiveCategory('All'); setSearchTerm('');}}
+                  className="text-red-600 hover:underline"
+                >
+                  {t('forum.clearFilters')}
+                </button>
+              )}
             </div>
 
             {isLoading ? (
@@ -239,12 +249,12 @@ const Forum = () => {
               </div>
             ) : sortedPosts.length === 0 ? (
               <div className="bg-white rounded-lg shadow-md p-10 text-center">
-                <p className="text-lg text-gray-600 mb-6">No discussions found matching your criteria.</p>
+                <p className="text-lg text-gray-600 mb-6">{t('forum.noDiscussions')}</p>
                 <button 
                   onClick={() => {setActiveCategory('All'); setSearchTerm('');}}
                   className="text-red-600 hover:underline"
                 >
-                  Clear filters
+                  {t('forum.clearFilters')}
                 </button>
               </div>
             ) : (
@@ -259,7 +269,7 @@ const Forum = () => {
                           </Link>
                           {post.isPopular && (
                             <span className="ml-2 px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full">
-                              Popular
+                              {t('forum.popular')}
                             </span>
                           )}
                         </h3>
@@ -285,14 +295,14 @@ const Forum = () => {
                         </div>
                         <div className="flex items-center mr-4">
                           <FiMessageSquare className="mr-1" />
-                          {post.replies} replies
+                          {post.replies} {t('forum.replies')}
                         </div>
                         <div className="flex items-center">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                           </svg>
-                          {post.views} views
+                          {post.views} {t('forum.views')}
                         </div>
                       </div>
                     </div>
@@ -305,12 +315,12 @@ const Forum = () => {
             {!isLoading && sortedPosts.length > 0 && (
               <div className="flex justify-center mt-10">
                 <nav className="flex items-center gap-1">
-                  <button className="px-3 py-1 border rounded hover:bg-gray-100">Previous</button>
+                  <button className="px-3 py-1 border rounded hover:bg-gray-100">{t('forum.previous')}</button>
                   <button className="px-3 py-1 border rounded bg-red-600 text-white">1</button>
                   <button className="px-3 py-1 border rounded hover:bg-gray-100">2</button>
                   <button className="px-3 py-1 border rounded hover:bg-gray-100">3</button>
                   <span className="px-2">...</span>
-                  <button className="px-3 py-1 border rounded hover:bg-gray-100">Next</button>
+                  <button className="px-3 py-1 border rounded hover:bg-gray-100">{t('forum.next')}</button>
                 </nav>
               </div>
             )}
@@ -319,13 +329,23 @@ const Forum = () => {
 
         {/* Community Guidelines */}
         <div className="mt-16 p-6 bg-yellow-50 rounded-lg border border-yellow-100">
-          <h2 className="text-xl font-semibold mb-3">Community Guidelines</h2>
+          <h2 className="text-xl font-semibold mb-3">{t('forum.communityGuidelines')}</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-600">
-            <li>Be respectful and supportive of other community members</li>
-            <li>Share your knowledge and experiences to help others grow</li>
-            <li>Keep discussions relevant to women's empowerment and skill development</li>
-            <li>Respect privacy and confidentiality when sharing personal stories</li>
-            <li>Report any inappropriate content to our moderators</li>
+            {Array.isArray(t('forum.guidelineRules', { returnObjects: true })) 
+              ? t('forum.guidelineRules', { returnObjects: true }).map((rule, index) => (
+                  <li key={index} className="flex">
+                    <span className="text-red-600 mr-2">•</span>
+                    <span>{rule}</span>
+                  </li>
+                ))
+              : (
+                  // Fallback in case the translation doesn't return an array
+                  <li className="flex">
+                    <span className="text-red-600 mr-2">•</span>
+                    <span>{t('forum.guidelines.rules.0', 'Be respectful and supportive of other community members')}</span>
+                  </li>
+                )
+            }
           </ul>
         </div>
       </div>

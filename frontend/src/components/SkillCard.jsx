@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const SkillCard = ({ skill }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="overflow-hidden bg-white rounded-xl shadow-card hover:shadow-elegant transition-all duration-300 h-full">
       <div className="p-5">
@@ -18,7 +21,7 @@ const SkillCard = ({ skill }) => {
         
         <div className="mt-auto pt-2">
           <span className="inline-block px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-600 hover:bg-primary-700 transition-colors">
-            Learn More
+            {t('components.skillCard.learnMore')}
           </span>
         </div>
       </div>

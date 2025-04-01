@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import SkillCard from '../components/SkillCard';
 import { fetchAllSkills } from '../api';
 import { FiSearch, FiX, FiMessageCircle, FiSend } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 // API key as a string constant to prevent JS evaluation errors
 const GROQ_API_KEY = "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";
 
 const Skills = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [skills, setSkills] = useState([]);
   const [filteredSkills, setFilteredSkills] = useState([]);
@@ -210,13 +212,13 @@ const Skills = () => {
   return (
     <div className="py-12">
       <div className="container">
-        <h1 className="mb-8 text-3xl font-bold text-center">Explore Skills</h1>
+        <h1 className="mb-8 text-3xl font-bold text-center">{t('skills.title')}</h1>
 
         <div className="max-w-md mx-auto mb-12">
           <div className="relative">
             <input
               type="text"
-              placeholder="Search skills..."
+              placeholder={t('skills.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full px-4 py-3 pl-12 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -252,7 +254,7 @@ const Skills = () => {
         
         {isLoading ? (
           <div className="flex justify-center">
-            <p>Loading skills...</p>
+            <p>{t('skills.loading')}</p>
           </div>
         ) : error ? (
           <div className="p-4 text-center text-red-600 bg-red-100 rounded-md">
@@ -260,7 +262,7 @@ const Skills = () => {
           </div>
         ) : filteredSkills.length === 0 ? (
           <div className="p-4 text-center">
-            <p>No skills found matching your search.</p>
+            <p>{t('skills.noSkills')}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -305,10 +307,11 @@ const Skills = () => {
           <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-lg w-full max-w-4xl overflow-hidden">
               <div className="flex justify-between items-center p-4 border-b">
-                <h3 className="text-xl font-semibold">Video Preview</h3>
+                <h3 className="text-xl font-semibold">{t('components.videoModal.title')}</h3>
                 <button 
                   onClick={closeVideoModal}
                   className="text-gray-500 hover:text-gray-700 focus:outline-none"
+                  aria-label={t('components.videoModal.close')}
                 >
                   <FiX size={24} />
                 </button>
@@ -317,7 +320,7 @@ const Skills = () => {
                 <iframe
                   className="absolute top-0 left-0 w-full h-full"
                   src={currentVideo}
-                  title="YouTube Video"
+                  title={t('pages.skills.videoPreview')}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -344,7 +347,7 @@ const Skills = () => {
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
                     <FiMessageCircle size={20} className="text-red-600" />
                   </div>
-                  <h3 className="text-xl font-semibold">EmpowerHer Assistant</h3>
+                  <h3 className="text-xl font-semibold">{t('components.chatAssistant.title')}</h3>
                 </div>
                 <button 
                   onClick={closeChatModal}
@@ -363,7 +366,7 @@ const Skills = () => {
                     </div>
                     <div className="bg-white p-3 rounded-lg shadow-sm max-w-[80%]">
                       <p className="text-gray-800">
-                        Hello! I'm your EmpowerHer Assistant. How can I help you with your skill development journey today?
+                        {t('components.chatAssistant.welcome')}
                       </p>
                     </div>
                   </div>
@@ -423,7 +426,7 @@ const Skills = () => {
                     type="text"
                     value={chatMessage}
                     onChange={(e) => setChatMessage(e.target.value)}
-                    placeholder="Ask about skills or career advice..."
+                    placeholder={t('components.chatAssistant.placeholder')}
                     className="flex-1 px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                     disabled={isChatLoading}
                   />

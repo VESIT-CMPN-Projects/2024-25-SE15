@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX, FiSearch } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +11,7 @@ const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
   const { t } = useTranslation();
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,11 @@ const Navbar = () => {
     setShowSearch(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    // This is just to force re-render when language changes
+    console.log("Language changed to:", currentLanguage);
+  }, [currentLanguage]);
+
   const isActive = (path) => {
     return location.pathname === path ? 'text-primary-600 font-medium' : 'text-text-primary hover:text-primary-600';
   };
@@ -35,7 +42,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <img
-              src="https://img1.wsimg.com/isteam/ip/5750e2c8-11f4-4a60-94d4-99a7589f14bd/WWF%20LOGO%20.png/:/rs=w:190,h:200,cg:true,m/cr=w:190,h:200/qt=q:95"
+              src="https://img1.wsimg.com/isteam/ip/5750e2c8-11f4-4a60-94d4-99a7589f14bd/WWF%20LOGO%20.png/:/rs=w:190,h:200,cg=true,m/cr=w:190,h:200/qt=q:95"
               alt="EmpowerHer Logo"
               className="h-10 w-auto"
             />

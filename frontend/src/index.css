@@ -219,3 +219,19 @@
 .animate-ping {
   animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
+
+/* Language transition animation */
+.language-fade-enter {
+  opacity: 0;
+}
+.language-fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.language-fade-exit {
+  opacity: 1;
+}
+.language-fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}

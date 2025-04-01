@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   fetchSkillById, 
   fetchSkillVideos, 
@@ -10,6 +11,7 @@ import {
 } from '../api';
 
 const SkillDetail = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const [skill, setSkill] = useState(null);
   const [videos, setVideos] = useState([]);
@@ -152,19 +154,19 @@ const SkillDetail = () => {
           className={`px-6 py-3 font-medium ${activeTab === 'videos' ? 'border-b-2 border-red-600 text-red-600' : 'text-gray-500'}`}
           onClick={() => setActiveTab('videos')}
         >
-          Videos
+          {t('skillDetail.videos')}
         </button>
         <button
           className={`px-6 py-3 font-medium ${activeTab === 'flashcards' ? 'border-b-2 border-red-600 text-red-600' : 'text-gray-500'}`}
           onClick={() => setActiveTab('flashcards')}
         >
-          Flashcards
+          {t('skillDetail.flashcards')}
         </button>
         <button
           className={`px-6 py-3 font-medium ${activeTab === 'market' ? 'border-b-2 border-red-600 text-red-600' : 'text-gray-500'}`}
           onClick={() => setActiveTab('market')}
         >
-          Market
+          {t('skillDetail.market')}
         </button>
       </div>
     </div>
@@ -194,6 +196,7 @@ const SkillDetail = () => {
                   <button 
                     className="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition-colors"
                     onClick={() => handlePlayVideo(video)}
+                    aria-label={t('pages.skillDetail.playVideo')}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.868v4.264a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -247,7 +250,7 @@ const SkillDetail = () => {
         <div className="space-y-8">
           {/* Market Opportunities Section */}
           <div className="market-opportunities">
-            <h2 className="text-xl font-bold mb-4">Market Opportunities</h2>
+            <h2 className="text-xl font-bold mb-4">{t('pages.skillDetail.marketOpportunities')}</h2>
             {opportunities.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {opportunities.map(opportunity => (
@@ -258,7 +261,7 @@ const SkillDetail = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500">No market opportunities available at this time.</p>
+              <p className="text-gray-500">{t('pages.skillDetail.noOpportunities')}</p>
             )}
           </div>
           
@@ -266,20 +269,20 @@ const SkillDetail = () => {
           {(id === "1" || id === "7" || id === "4") && dealers.length > 0 && (
             <div className="dealers-section mt-8">
               <h2 className="text-xl font-bold mb-4">
-                {id === "1" ? "Paper Bag Dealers in Thane" : 
-                 id === "7" ? "Candle Making Suppliers and Support in Thane" :
-                 "Mask Making Support Organizations in Thane"}
+                {id === "1" ? t('pages.skillDetail.paperBagDealers') : 
+                 id === "7" ? t('pages.skillDetail.candleSuppliers') :
+                 t('pages.skillDetail.maskSupport')}
               </h2>
               <div className="grid grid-cols-1 gap-4">
                 {dealers.map(dealer => (
                   <div key={dealer._id} className="bg-white p-4 rounded-lg shadow border border-gray-200">
                     <h3 className="font-semibold text-lg">{dealer.name}</h3>
                     <div className="mt-2 space-y-1 text-sm">
-                      <p><span className="font-medium">Address:</span> {dealer.address}</p>
-                      <p><span className="font-medium">Contact:</span> {dealer.contact}</p>
-                      {dealer.email && <p><span className="font-medium">Email:</span> {dealer.email}</p>}
-                      {dealer.website && <p><span className="font-medium">Website:</span> <a href={dealer.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{dealer.website}</a></p>}
-                      {dealer.category && <p><span className="font-medium">Category:</span> {dealer.category}</p>}
+                      <p><span className="font-medium">{t('pages.skillDetail.address')}:</span> {dealer.address}</p>
+                      <p><span className="font-medium">{t('pages.skillDetail.contact')}:</span> {dealer.contact}</p>
+                      {dealer.email && <p><span className="font-medium">{t('pages.skillDetail.email')}:</span> {dealer.email}</p>}
+                      {dealer.website && <p><span className="font-medium">{t('pages.skillDetail.website')}:</span> <a href={dealer.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{dealer.website}</a></p>}
+                      {dealer.category && <p><span className="font-medium">{t('pages.skillDetail.category')}:</span> {dealer.category}</p>}
                       <p className="mt-2 text-gray-600">{dealer.description}</p>
                     </div>
                   </div>
@@ -295,7 +298,7 @@ const SkillDetail = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center py-16">
-        <p>Loading skill details...</p>
+        <p>{t('skillDetail.loading')}</p>
       </div>
     );
   }
@@ -314,7 +317,7 @@ const SkillDetail = () => {
     return (
       <div className="container py-16">
         <div className="p-4 text-center">
-          <p>Skill not found.</p>
+          <p>{t('pages.skillDetail.skillNotFound')}</p>
         </div>
       </div>
     );
@@ -324,7 +327,7 @@ const SkillDetail = () => {
     <div className="py-12">
       <div className="container">
         <button className="mb-6 text-red-600 hover:underline" onClick={() => window.history.back()}>
-          &larr; Back
+          &larr; {t('skillDetail.back')}
         </button>
         <h1 className="mb-4 text-3xl font-bold">{skill.title}</h1>
         {renderTabs()}

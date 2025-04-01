@@ -1,20 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import openBrowser from 'open' // Import the 'open' package correctly
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      }
-    }
+    open: true, // This will automatically open the browser
+    // If you need to programmatically open the browser:
+    // async afterServerStart(server) {
+    //   await openBrowser(`http://localhost:${server.config.server.port}`);
+    // }
   },
   // Add this to help with routing in development
   resolve: {
+    extensions: ['.js', '.jsx'],
     alias: {
       '@': '/src',
     },

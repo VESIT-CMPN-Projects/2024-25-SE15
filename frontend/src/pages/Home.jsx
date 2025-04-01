@@ -1,40 +1,36 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { fetchSkills } from "../api";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fetchFeaturedSkills } from '../api';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
+  const { t } = useTranslation();
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Function to fetch skills data from our static data source
-    const loadSkills = async () => {
+    const fetchSkills = async () => {
       try {
         setLoading(true);
-        const response = await fetchSkills();
-        // Extract the skills array from the response
-        setSkills(response.data.data || []);
-        setError(false);
+        const response = await fetchFeaturedSkills();
+        setSkills(response.data.data.slice(0, 4)); // Limit to 4 skills
+        setLoading(false);
       } catch (err) {
-        console.error('Error loading skills:', err);
-        setError(true);
-      } finally {
+        console.error('Error fetching skills:', err);
+        setError('Failed to load featured skills');
         setLoading(false);
       }
     };
 
-    loadSkills();
+    fetchSkills();
   }, []);
 
   return (
-    <div className="bg-white overflow-hidden">
-      {/* Navbar */}
-      
-
+    <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-yellow-50 to-white">
+      <section className="relative bg-gradient-to-r from-white to-red-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col lg:flex-row items-center">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
@@ -43,18 +39,18 @@ const Home = () => {
             className="lg:w-1/2"
           >
             <h1 className="text-5xl font-extrabold text-red-600 leading-tight tracking-tight">
-              Breaking Barriers <br /> 
-              <span className="text-gray-800">Creating Opportunities</span>
+              {t('home.hero.title')} <br /> 
+              <span className="text-gray-800">{t('home.hero.subtitle')}</span>
             </h1>
             <p className="mt-6 text-lg text-gray-700 leading-relaxed max-w-lg">
-              Empowering women with skills, knowledge, and resources to build a brighter future.
+              {t('home.hero.description')}
             </p>
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="mt-8 bg-red-600 text-white px-10 py-4 rounded-lg hover:bg-red-700 font-medium text-lg shadow-lg transform transition duration-300"
             >
-              Start Learning
+              {t('home.hero.cta')}
             </motion.button>
           </motion.div>
           <motion.div 
@@ -86,19 +82,19 @@ const Home = () => {
           >
             <div className="p-6 bg-red-50 rounded-xl shadow-sm transform transition-transform hover:scale-105">
               <h2 className="text-5xl font-bold text-red-600">5000+</h2>
-              <p className="text-gray-700 text-lg font-medium mt-2">Women Trained</p>
+              <p className="text-gray-700 text-lg font-medium mt-2">{t('home.stats.womenTrained')}</p>
             </div>
             <div className="p-6 bg-red-50 rounded-xl shadow-sm transform transition-transform hover:scale-105">
               <h2 className="text-5xl font-bold text-red-600">10+</h2>
-              <p className="text-gray-700 text-lg font-medium mt-2">Skills Offered</p>
+              <p className="text-gray-700 text-lg font-medium mt-2">{t('home.stats.skillsOffered')}</p>
             </div>
             <div className="p-6 bg-red-50 rounded-xl shadow-sm transform transition-transform hover:scale-105">
               <h2 className="text-5xl font-bold text-red-600">1000+</h2>
-              <p className="text-gray-700 text-lg font-medium mt-2">Success Stories</p>
+              <p className="text-gray-700 text-lg font-medium mt-2">{t('home.stats.successStories')}</p>
             </div>
             <div className="p-6 bg-red-50 rounded-xl shadow-sm transform transition-transform hover:scale-105">
               <h2 className="text-5xl font-bold text-red-600">50+</h2>
-              <p className="text-gray-700 text-lg font-medium mt-2">Partners</p>
+              <p className="text-gray-700 text-lg font-medium mt-2">{t('home.stats.partners')}</p>
             </div>
           </motion.div>
         </div>
@@ -115,11 +111,11 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-extrabold text-red-600 inline-block relative">
-              Our Skills
+              {t('home.skills.title')}
               <div className="h-1 w-24 bg-red-600 mx-auto mt-4"></div>
             </h2>
             <p className="mt-6 text-xl text-gray-700 max-w-3xl mx-auto">
-              Explore our range of skills designed to help you thrive in today's digital economy
+              {t('home.skills.subtitle')}
             </p>
           </motion.div>
 
@@ -165,7 +161,7 @@ const Home = () => {
                     <h3 className="text-xl font-bold text-gray-800">{skill.title}</h3>
                     <p className="mt-2 text-gray-600">{skill.description}</p>
                     <Link to={`/skills/${skill._id}`} className="mt-4 inline-block text-red-600 font-medium hover:text-red-700">
-                      Learn more →
+                      {t('home.skills.learnMore')} →
                     </Link>
                   </div>
                 </motion.div>
@@ -198,25 +194,19 @@ const Home = () => {
               </div>
             </div>
             <div className="lg:w-1/2 order-1 lg:order-2 mt-10 lg:mt-0">
-              <h2 className="text-4xl font-extrabold text-red-600 after:content-[''] after:block after:w-16 after:h-1 after:bg-red-600 after:mt-4">About Us</h2>
+              <h2 className="text-4xl font-extrabold text-red-600 after:content-[''] after:block after:w-16 after:h-1 after:bg-red-600 after:mt-4">{t('home.about.title')}</h2>
               <p className="mt-8 text-lg text-gray-700 leading-relaxed">
-                EmpowerHer, an initiative by Women's Welfare Foundation, is a
-                skill-building platform designed to empower individuals by
-                teaching marketable skills and helping them turn these skills into
-                income. We connect learners with opportunities to sell their
-                products, fostering financial independence and self-reliance.
+                {t('home.about.description1')}
               </p>
               <p className="mt-4 text-lg text-gray-700 leading-relaxed">
-                Our mission is to bridge the gender gap in workforce participation
-                and create pathways to economic independence for women across all
-                backgrounds.
+                {t('home.about.description2')}
               </p>
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="mt-8 bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 font-medium text-lg shadow-md transform transition duration-300"
               >
-                Learn More
+                {t('home.about.button')}
               </motion.button>
             </div>
           </motion.div>

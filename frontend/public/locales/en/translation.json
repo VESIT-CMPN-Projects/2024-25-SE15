@@ -65,7 +65,15 @@
         "Respect privacy and confidentiality when sharing personal stories",
         "Report any inappropriate content to our moderators"
       ]
-    }
+    },
+    "communityGuidelines": "Community Guidelines",
+    "guidelineRules": [
+      "Be respectful and supportive of other community members",
+      "Share your knowledge and experiences to help others grow",
+      "Keep discussions relevant to women's empowerment and skill development",
+      "Respect privacy and confidentiality when sharing personal stories",
+      "Report any inappropriate content to our moderators"
+    ]
   },
   "footer": {
     "quickLinks": "Quick Links",
@@ -81,5 +89,64 @@
     "english": "English",
     "hindi": "Hindi",
     "marathi": "Marathi"
+  },
+  "components": {
+    "skillCard": {
+      "learnMore": "Learn More"
+    },
+    "chatAssistant": {
+      "title": "EmpowerHer Assistant",
+      "welcome": "Hello! I'm your EmpowerHer Assistant. How can I help you with your skill development journey today?",
+      "placeholder": "Ask about skills or career advice...",
+      "sending": "Sending...",
+      "error": "Sorry, I encountered an error. Please try again later."
+    },
+    "videoModal": {
+      "title": "Video Preview",
+      "close": "Close"
+    }
+  },
+  "pages": {
+    "skills": {
+      "videoPreview": "Video Preview",
+      "chatbot": {
+        "title": "EmpowerHer Assistant",
+        "welcome": "Hello! I'm your EmpowerHer Assistant. How can I help you with your skill development journey today?",
+        "inputPlaceholder": "Ask about skills or career advice..."
+      }
+    },
+    "skillDetail": {
+      "marketOpportunities": "Market Opportunities",
+      "noOpportunities": "No market opportunities available at this time.",
+      "paperBagDealers": "Paper Bag Dealers in Thane",
+      "candleSuppliers": "Candle Making Suppliers and Support in Thane",
+      "maskSupport": "Mask Making Support Organizations in Thane",
+      "address": "Address",
+      "contact": "Contact",
+      "email": "Email",
+      "website": "Website",
+      "category": "Category",
+      "skillNotFound": "Skill not found.",
+      "playVideo": "Play video"
+    },
+    "forum": {
+      "createPost": "Create New Post",
+      "categories": "Categories",
+      "allCategories": "All Categories",
+      "searchPlaceholder": "Search discussions...",
+      "noDiscussions": "No discussions found matching your criteria.",
+      "clearFilters": "Clear filters",
+      "popular": "Popular",
+      "communityGuidelines": "Community Guidelines",
+      "guidelineRules": [
+        "Be respectful and supportive of other community members",
+        "Share your knowledge and experiences to help others grow",
+        "Keep discussions relevant to women's empowerment and skill development",
+        "Respect privacy and confidentiality when sharing personal stories",
+        "Report any inappropriate content to our moderators"
+      ],
+      "previous": "Previous",
+      "next": "Next"
+    }
   }
 }
