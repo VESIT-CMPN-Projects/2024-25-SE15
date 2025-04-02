@@ -8,6 +8,7 @@ import SkillDetail from './pages/SkillDetail';
 import Forum from './pages/Forum';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Support from './pages/Support';
 import { LanguageProvider } from './contexts/LanguageContext';
 
 // Loading spinner for Suspense fallback
@@ -31,6 +32,7 @@ function App() {
               <Route path="/forum" element={<Forum />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/support" element={<Support />} />
             </Routes>
           </main>
           <Footer />

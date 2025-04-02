@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import { 
   fetchSkillById, 
   fetchSkillVideos, 
@@ -295,43 +296,90 @@ const SkillDetail = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center py-16">
-        <p>{t('skillDetail.loading')}</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="container py-16">
-        <div className="p-4 text-center text-red-600 bg-red-100 rounded-md">
-          {error}
-        </div>
-      </div>
-    );
-  }
-
-  if (!skill) {
-    return (
-      <div className="container py-16">
-        <div className="p-4 text-center">
-          <p>{t('pages.skillDetail.skillNotFound')}</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="py-12">
-      <div className="container">
-        <button className="mb-6 text-red-600 hover:underline" onClick={() => window.history.back()}>
-          &larr; {t('skillDetail.back')}
-        </button>
-        <h1 className="mb-4 text-3xl font-bold">{skill.title}</h1>
-        {renderTabs()}
-        {renderContent()}
+    <div className="py-12 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.button 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6 text-red-700 hover:text-red-800 font-medium flex items-center group" 
+          onClick={() => window.history.back()}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 transform transition-transform group-hover:-translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+          </svg>
+          {t('skillDetail.back')}
+        </motion.button>
+
+        {isLoading ? (
+          <div className="flex justify-center py-16">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-700"></div>
+          </div>
+        ) : error ? (
+          <div className="container py-16">
+            <div className="p-4 text-center text-red-700 bg-red-100 rounded-xl">
+              {error}
+            </div>
+          </div>
+        ) : !skill ? (
+          <div className="container py-16">
+            <div className="p-4 text-center">
+              <p>{t('pages.skillDetail.skillNotFound')}</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-8"
+            >
+              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+                <div className="md:flex">
+                  <div className="md:flex-shrink-0">
+                    <img 
+                      className="h-64 w-full object-cover md:w-64" 
+                      src={skill.thumbnail || "/placeholder-skill.jpg"} 
+                      alt={skill.title}
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="uppercase tracking-wide text-sm text-red-700 font-semibold">
+                      {skill.category || "Skill"}
+                    </div>
+                    <h1 className="mt-1 text-3xl font-bold text-gray-900 leading-tight">
+                      {skill.title}
+                    </h1>
+                    <p className="mt-2 text-gray-600">
+                      {skill.description}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {skill.tags && skill.tags.map((tag, index) => (
+                        <span key={index} className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {renderTabs()}
+              <div className="bg-white rounded-xl shadow-md p-6 mt-4">
+                {renderContent()}
+              </div>
+            </motion.div>
+          </>
+        )}
+
         {renderVideoModal()}
       </div>
     </div>

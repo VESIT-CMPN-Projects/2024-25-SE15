@@ -7,63 +7,49 @@ const skillsData = [
     title: "Paper Bag Making", 
     description: "Learn how to create eco-friendly paper bags", 
     thumbnail: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFb3v8XnU0WdTTaxI/root/content", 
-    content: "Paper bag making is an eco-friendly skill that helps reduce plastic waste. This course teaches you how to create durable and attractive paper bags using simple materials.",
-    duration: "2 weeks",
-    level: "Beginner"
+    content: "Paper bag making is an eco-friendly skill that helps reduce plastic waste. This course teaches you how to create durable and attractive paper bags using simple materials."
   },
   { 
     _id: "2", 
     title: "Cloth Bag Making", 
     description: "Create sustainable and stylish cloth bags", 
     thumbnail: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFcjrqDwYCMfA7j7g/root/content",
-    content: "Cloth bag making is a sustainable alternative to plastic bags. Learn to design and sew different types of cloth bags that are both functional and fashionable.",
-    duration: "3 weeks",
-    level: "Beginner"
+    content: "Cloth bag making is a sustainable alternative to plastic bags. Learn to design and sew different types of cloth bags that are both functional and fashionable."
   },
   { 
     _id: "3", 
     title: "Sanitizer Making", 
     description: "Learn to make effective hand sanitizers at home", 
     thumbnail: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFcSO-WEQxJ_zthjw/root/content",
-    content: "This course teaches you how to make effective hand sanitizers using readily available ingredients. Learn the correct proportions and methods for safe and effective sanitizers.",
-    duration: "1 week",
-    level: "Beginner"
+    content: "This course teaches you how to make effective hand sanitizers using readily available ingredients. Learn the correct proportions and methods for safe and effective sanitizers."
   },
   { 
     _id: "4", 
     title: "Mask Making", 
     description: "Create protective and comfortable face masks", 
     thumbnail: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFddS7ZS2yuWtWddQ/root/content",
-    content: "Learn how to make protective face masks that are both effective and comfortable. This skill helps protect yourself and others while offering potential income opportunities.",
-    duration: "2 weeks",
-    level: "Beginner"
+    content: "Learn how to make protective face masks that are both effective and comfortable. This skill helps protect yourself and others while offering potential income opportunities."
   },
   { 
     _id: "5", 
     title: "Sanitary Pads Making", 
     description: "Create affordable and eco-friendly sanitary pads", 
     thumbnail: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFbh3-OTrcAQ79IKU/root/content",
-    content: "This course teaches you how to make reusable, eco-friendly sanitary pads. Learn about sustainable menstrual health solutions that are cost-effective and environmentally responsible.",
-    duration: "2 weeks",
-    level: "Intermediate"
+    content: "This course teaches you how to make reusable, eco-friendly sanitary pads. Learn about sustainable menstrual health solutions that are cost-effective and environmentally responsible."
   },
   { 
     _id: "6", 
     title: "Diya Making", 
     description: "Craft beautiful traditional diyas for festivals", 
     thumbnail: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFcOe1tb48X10FguA/root/content",
-    content: "Diya making is a traditional craft that's especially popular during festivals. Learn to create beautiful clay diyas with various designs and decorations.",
-    duration: "3 weeks",
-    level: "Beginner"
+    content: "Diya making is a traditional craft that's especially popular during festivals. Learn to create beautiful clay diyas with various designs and decorations."
   },
   { 
     _id: "7", 
     title: "Candle Making", 
     description: "Create decorative and scented candles", 
     thumbnail: "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFbPR6XmFHLSPjkuE/root/content",
-    content: "Candle making is both a relaxing hobby and a potential business. Learn to make various types of candles including decorative, scented, and specialty designs.",
-    duration: "4 weeks",
-    level: "Beginner"
+    content: "Candle making is both a relaxing hobby and a potential business. Learn to make various types of candles including decorative, scented, and specialty designs."
   }
 ];
 
@@ -78,7 +64,7 @@ const videosData = {
     { 
       _id: "v2", 
       title: "Creating Decorative Paper Bags", 
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" // Original format
+      videoUrl: "" // Original format
     }
   ],
   "2": [
