@@ -62,7 +62,10 @@ const Home = () => {
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-gradient-to-tr from-red-200 to-yellow-100 rounded-2xl transform rotate-2 scale-105"></div>
               <img
-                src="image.png"
+                src=
+ "https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFgQJyTeG0SICtF-Ml/root/content"
+
+
                 alt="EmpowerHer Hero"
                 className="relative rounded-2xl shadow-xl w-full max-w-[700px] h-auto object-cover border-2 border-white z-10"
               />
@@ -174,7 +177,7 @@ const Home = () => {
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-red-200 rounded-full opacity-50 animate-pulse"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-yellow-200 rounded-full opacity-50 animate-pulse" style={{ animationDelay: "1s" }}></div>
                 <img
-                  src="/image copy.png"
+                  src="https://api.onedrive.com/v1.0/shares/s!AiVGDzhpT6RFgQGXD-YGTSz-QCYG/root/content"
                   alt="About Us"
                   className="rounded-2xl shadow-xl relative z-10 border-4 border-white"
                 />
