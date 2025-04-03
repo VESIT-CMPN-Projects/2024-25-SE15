@@ -131,7 +131,7 @@ const videosData = {
     { 
       _id: "v13", 
       title: "Candle Making Basics", 
-      videoUrl: "https://www.youtube.com/embed/example11" // Replace with a valid video URL
+      videoUrl: "https://www.youtube.com/watch?v=fQ8zRq62tao" // Replace with a valid video URL
     },
     { 
       _id: "v14", 

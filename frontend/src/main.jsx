@@ -15,6 +15,6 @@ if (!rootElement) {
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </React.StrictMode>,
+    </React.StrictMode>
   )
 }
